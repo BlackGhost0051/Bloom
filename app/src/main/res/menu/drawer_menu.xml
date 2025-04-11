@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_randomize"
+        android:title="Randomize"
+        android:icon="@android:drawable/ic_menu_rotate" />
+
+    <item
+        android:id="@+id/menu_privacy"
+        android:title="Privacy"
+        android:icon="@android:drawable/ic_lock_lock" />
+
+    <item
+        android:id="@+id/menu_inertia"
+        android:title="Inertia"
+        android:icon="@android:drawable/ic_menu_sort_by_size" />
+</menu>
