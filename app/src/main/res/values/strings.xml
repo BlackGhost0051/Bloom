@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Bloom</string>
+
+
+
+
+    <string name="menu_randomize">Randomize</string>
+    <string name="menu_privacy">Privacy</string>
+    <string name="menu_inertia">Inertia</string>
+    <string name="menu_save_position">Save position</string>
 </resources>
