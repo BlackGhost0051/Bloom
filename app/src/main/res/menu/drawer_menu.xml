@@ -2,16 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_randomize"
-        android:title="Randomize"
-        android:icon="@android:drawable/ic_menu_rotate" />
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:title="@string/menu_randomize"
+        />
 
     <item
         android:id="@+id/menu_privacy"
-        android:title="Privacy"
-        android:icon="@android:drawable/ic_lock_lock" />
+        android:icon="@android:drawable/ic_lock_lock"
+        android:title="@string/menu_privacy"
+        />
 
     <item
         android:id="@+id/menu_inertia"
-        android:title="Inertia"
-        android:icon="@android:drawable/ic_menu_sort_by_size" />
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/menu_inertia"
+        />
+
+    <item
+        android:id="@+id/menu_save_position"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/menu_save_position" />
 </menu>
