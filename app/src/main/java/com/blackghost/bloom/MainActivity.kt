@@ -1,31 +1,45 @@
 package com.blackghost.bloom
 
 import android.os.Bundle
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.view.Gravity
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var textView: TextView
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var open_menu_button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        textView = findViewById(R.id.text_view)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        open_menu_button = findViewById(R.id.open_menu_button)
 
 
-        textView.setText("TEST")
+        open_menu_button.setOnClickListener{
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
 
 
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        val navView: NavigationView = findViewById(R.id.navigation_view)
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_randomize -> {
+
+                }
+                R.id.menu_privacy -> {
+
+                }
+            }
+            drawerLayout.closeDrawers()
+            true
         }
     }
 }
