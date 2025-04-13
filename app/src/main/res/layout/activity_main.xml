@@ -12,12 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <ImageButton
             android:id="@+id/open_menu_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text=""
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:scaleType="fitXY"
+            android:background="#00FFFFFF"
+            android:src="@drawable/contrast_24"
+            android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
