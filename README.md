@@ -1,6 +1,6 @@
 # Bloom
 
-![](./app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp "Bloom")
+![](./app/src/main/ic_launcher-playstore.png "Bloom")
 
 # Documentation
 
