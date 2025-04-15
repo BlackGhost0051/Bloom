@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.menu_privacy -> {
 
                 }
+                R.id.menu_inertia -> {
+
+                }
+                R.id.menu_save_position -> {
+
+                }
             }
             drawerLayout.closeDrawers()
             true
