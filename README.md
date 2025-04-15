@@ -2,6 +2,9 @@
 
 ![](./app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp "Bloom")
 
-# Documentation
+# Content
 
-# Info
+- [Documentation](#documentation)
+
+
+# Documentation
