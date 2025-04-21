@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.blackghost.bloom.Fragment.MainFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -47,6 +48,13 @@ class MainActivity : AppCompatActivity() {
             }
             drawerLayout.closeDrawers()
             true
+        }
+
+
+        if (savedInstanceState == null){
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, MainFragment())
+                .commit()
         }
     }
 }
