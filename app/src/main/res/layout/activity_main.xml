@@ -9,6 +9,7 @@
 
 
     <FrameLayout
+        android:layout_marginTop="25dp"
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -24,7 +25,7 @@
 
             android:scaleType="fitXY"
             android:background="#00FFFFFF"
-            android:src="@drawable/contrast_24"
+            android:src="@drawable/menu_24"
             android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +47,7 @@
         android:fitsSystemWindows="true"
         android:layout_gravity="end"
 
-        android:background="@color/white"
+        style="@style/nav_view_style"
         />
 
 
