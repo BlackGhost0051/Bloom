@@ -43,10 +43,7 @@ class PhotoManager(private val context: Context) {
         }?.toList() ?: emptyList()
     }
 
-    fun togglePrivacy(
-        itemIconTintCallback: (Int) -> Unit,
-        notifyMediaScanner: () -> Unit
-    ) {
+    fun togglePrivacy( itemIconTintCallback: (Int) -> Unit, notifyMediaScanner: () -> Unit ) {
         val nomediaFile = File(gPhotosDir, ".nomedia")
 
         if (nomediaFile.exists()) {
