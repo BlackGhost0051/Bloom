@@ -12,7 +12,14 @@ Bloom is a simple Android application written in Kotlin that creates a custom fo
 
 # Documentation
 
-# Features
+## Fragments
+
+### MainFragment
+
+
+## Info
+
+## Features
 
 - Creates a custom folder anywhere on your storage
 
