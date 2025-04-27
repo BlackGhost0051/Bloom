@@ -17,7 +17,7 @@ class MainFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private var photos: List<File> = emptyList()
-
+    private lateinit var photoManager: PhotoManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,7 @@ class MainFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
 
-        val photoManager = PhotoManager(requireContext())
+        photoManager = PhotoManager(requireContext())
         photoManager.createGPhotosFolderIfNeeded()
 
         return view
