@@ -1,7 +1,6 @@
 package com.blackghost.bloom.Manager
 
 import android.content.Context
-import android.os.Environment
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -10,15 +9,14 @@ import java.io.File
 
 class PhotoManager(private val context: Context) {
 
-    val gPhotosDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.let {
-        File(it, "Photos")
-    } ?: File(context.filesDir, "Photos")
+//    private val gPhotosDir: File = File(context.getExternalFilesDir(null), "Photos")
+    private val gFilesDir: File = context.getExternalFilesDir(null) ?: context.filesDir
 
     fun createGPhotosFolderIfNeeded() {
 
-        Log.d("DIR", gPhotosDir.toString())
-        if (!gPhotosDir.exists()) {
-            val created = gPhotosDir.mkdirs()
+        Log.d("DIR", gFilesDir.toString())
+        if (!gFilesDir.exists()) {
+            val created = gFilesDir.mkdirs()
             if (created) {
                 Toast.makeText(context, "Folder created", Toast.LENGTH_SHORT).show()
             } else {
@@ -28,13 +26,13 @@ class PhotoManager(private val context: Context) {
     }
 
     fun loadPhotosFromGPhotos(): List<File> {
-        return gPhotosDir.listFiles { file ->
+        return gFilesDir.listFiles { file ->
             file.extension.lowercase() in listOf("jpg", "jpeg", "png")
         }?.toList() ?: emptyList()
     }
 
     fun togglePrivacy( itemIconTintCallback: (Int) -> Unit, notifyMediaScanner: () -> Unit ) {
-        val nomediaFile = File(gPhotosDir, ".nomedia")
+        val nomediaFile = File(gFilesDir, ".nomedia")
 
         if (nomediaFile.exists()) {
             AlertDialog.Builder(context)
