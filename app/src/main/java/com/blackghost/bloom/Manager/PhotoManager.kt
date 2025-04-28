@@ -1,6 +1,8 @@
 package com.blackghost.bloom.Manager
 
 import android.content.Context
+import android.os.Environment
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.blackghost.bloom.R
@@ -8,31 +10,19 @@ import java.io.File
 
 class PhotoManager(private val context: Context) {
 
-    private val gPhotosDir: File by lazy {
-        val externalMediaPath = context.getExternalFilesDir(null)?.absolutePath
-            ?.replace("/Android/data/", "/Android/media/")
-
-        val directory = File(externalMediaPath ?: "", "Photos")
-
-        if (!directory.exists()) {
-            val created = directory.mkdirs()
-            if (created) {
-                Toast.makeText(context, "Photos directory created", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, "Failed to create Photos directory", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        directory
-    }
+    val gPhotosDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.let {
+        File(it, "Photos")
+    } ?: File(context.filesDir, "Photos")
 
     fun createGPhotosFolderIfNeeded() {
+
+        Log.d("DIR", gPhotosDir.toString())
         if (!gPhotosDir.exists()) {
             val created = gPhotosDir.mkdirs()
             if (created) {
-                Toast.makeText(context, "G_photos folder created", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Folder created", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context, "Failed to create G_photos folder", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Failed to create folder", Toast.LENGTH_SHORT).show()
             }
         }
     }

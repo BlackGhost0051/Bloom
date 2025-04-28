@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blackghost.bloom.Adapter.PhotoAdapter
 import com.blackghost.bloom.Manager.PhotoManager
 import com.blackghost.bloom.R
 import java.io.File
@@ -31,6 +32,9 @@ class MainFragment : Fragment() {
 
         photoManager = PhotoManager(requireContext())
         photoManager.createGPhotosFolderIfNeeded()
+
+        photos = photoManager.loadPhotosFromGPhotos()
+        recyclerView.adapter = PhotoAdapter(photos)
 
         return view
     }
