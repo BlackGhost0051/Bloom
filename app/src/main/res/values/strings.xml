@@ -8,4 +8,5 @@
     <string name="menu_privacy">Privacy</string>
     <string name="menu_inertia">Inertia</string>
     <string name="menu_save_position">Save position</string>
+    <string name="menu_settings">Settings</string>
 </resources>
