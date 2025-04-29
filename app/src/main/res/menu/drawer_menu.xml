@@ -21,5 +21,12 @@
     <item
         android:id="@+id/menu_save_position"
         android:icon="@android:drawable/ic_menu_save"
-        android:title="@string/menu_save_position" />
+        android:title="@string/menu_save_position"
+        />
+
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/settings_24"
+        android:title="@string/menu_settings"
+        />
 </menu>
