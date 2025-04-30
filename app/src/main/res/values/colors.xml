@@ -4,5 +4,7 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <color name="green">#00FF00</color>
+
     <color name="active_feature">#FF0000</color>
 </resources>
