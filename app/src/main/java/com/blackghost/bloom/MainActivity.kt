@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.blackghost.bloom.Fragment.MainFragment
+import com.blackghost.bloom.Fragment.SettingsFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -44,6 +45,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.menu_save_position -> {
 
+                }
+                R.id.menu_settings -> {
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, SettingsFragment())
+                        .commit()
                 }
             }
             drawerLayout.closeDrawers()
