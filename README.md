@@ -10,6 +10,7 @@ Bloom is a simple Android application written in Kotlin that creates a custom fo
 - [Documentation](#documentation)
 - [Fragments](#fragments)
   - [MainFragment](#mainfragment)
+  - [SettingsFragment](#settingsfragment)
 - [Info](#info)
 - [Features](#features)
 
@@ -19,6 +20,8 @@ Bloom is a simple Android application written in Kotlin that creates a custom fo
 ## Fragments
 
 ### MainFragment
+
+### SettingsFragment
 
 
 ## Info
