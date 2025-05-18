@@ -25,10 +25,12 @@ class PhotoManager(private val context: Context) {
         }
     }
 
-    fun loadPhotosFromGPhotos(): List<File> {
-        return gFilesDir.listFiles { file ->
+    fun loadPhotosFromGPhotos(shuffle: Boolean = false): List<File> {
+        val files = gFilesDir.listFiles { file ->
             file.extension.lowercase() in listOf("jpg", "jpeg", "png")
         }?.toList() ?: emptyList()
+
+        return if (shuffle) files.shuffled() else files
     }
 
     fun togglePrivacy( itemIconTintCallback: (Int) -> Unit, notifyMediaScanner: () -> Unit ) {

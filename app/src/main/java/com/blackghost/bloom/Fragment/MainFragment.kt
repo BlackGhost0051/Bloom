@@ -38,4 +38,9 @@ class MainFragment : Fragment() {
 
         return view
     }
+
+    fun refreshPhotos(shuffle: Boolean = false) {
+        photos = photoManager.loadPhotosFromGPhotos(shuffle)
+        recyclerView.adapter = PhotoAdapter(photos)
+    }
 }

@@ -35,9 +35,13 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_randomize -> {
-
+                    val fragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+                    if (fragment is MainFragment) {
+                        fragment.refreshPhotos(shuffle = true)
+                    }
                 }
                 R.id.menu_privacy -> {
+
 
                 }
                 R.id.menu_inertia -> {
