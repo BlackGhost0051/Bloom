@@ -12,6 +12,8 @@ class PhotoManager(private val context: Context) {
 //    private val gPhotosDir: File = File(context.getExternalFilesDir(null), "Photos")
     private val gFilesDir: File = context.getExternalFilesDir(null) ?: context.filesDir
 
+    fun getGPhotosDir(): File = gFilesDir
+
     fun createGPhotosFolderIfNeeded() {
 
         Log.d("DIR", gFilesDir.toString())

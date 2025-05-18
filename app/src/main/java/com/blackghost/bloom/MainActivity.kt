@@ -1,14 +1,18 @@
 package com.blackghost.bloom
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.blackghost.bloom.Fragment.MainFragment
 import com.blackghost.bloom.Fragment.SettingsFragment
+import com.blackghost.bloom.Manager.PhotoManager
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -41,8 +45,17 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 R.id.menu_privacy -> {
-
-
+                    val photoManager = PhotoManager(this)
+                    photoManager.togglePrivacy(
+                        itemIconTintCallback = { color ->
+                            menuItem.icon?.setTint(ContextCompat.getColor(this, color))
+                        },
+                        notifyMediaScanner = {
+                            sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).apply {
+                                data = Uri.fromFile(photoManager.getGPhotosDir())
+                            })
+                        }
+                    )
                 }
                 R.id.menu_inertia -> {
 
