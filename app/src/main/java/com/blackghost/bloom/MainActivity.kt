@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.blackghost.bloom.Fragment.InfoFragment
 import com.blackghost.bloom.Fragment.MainFragment
 import com.blackghost.bloom.Fragment.SettingsFragment
 import com.blackghost.bloom.Manager.PhotoManager
@@ -67,6 +68,12 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.fragment_container, SettingsFragment())
+                        .commit()
+                }
+                R.id.menu_info -> {
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, InfoFragment())
                         .commit()
                 }
             }
