@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-//        supportActionBar?.title = R.string.app_name.toString()
 
         drawerLayout = findViewById(R.id.drawer_layout)
         open_menu_button = findViewById(R.id.open_menu_button)
@@ -70,18 +69,21 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 R.id.menu_home -> {
+                    toolbar.setTitle(R.string.app_name)
                     supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.fragment_container, MainFragment())
                         .commit()
                 }
                 R.id.menu_settings -> {
+                    toolbar.setTitle(R.string.menu_settings)
                     supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.fragment_container, SettingsFragment())
                         .commit()
                 }
                 R.id.menu_info -> {
+                    toolbar.setTitle(R.string.menu_info)
                     supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.fragment_container, InfoFragment())
