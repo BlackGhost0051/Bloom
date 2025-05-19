@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -19,12 +20,16 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var toolbar: Toolbar
     private lateinit var open_menu_button: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+//        supportActionBar?.title = R.string.app_name.toString()
 
         drawerLayout = findViewById(R.id.drawer_layout)
         open_menu_button = findViewById(R.id.open_menu_button)
@@ -63,6 +68,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.menu_save_position -> {
 
+                }
+                R.id.menu_home -> {
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, MainFragment())
+                        .commit()
                 }
                 R.id.menu_settings -> {
                     supportFragmentManager
