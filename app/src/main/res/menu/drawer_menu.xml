@@ -18,26 +18,24 @@
         android:title="@string/menu_inertia"
         />
 
-    <item
-        android:id="@+id/menu_save_position"
-        android:icon="@drawable/save_24"
-        android:title="@string/menu_save_position"
-        />
-    <item
-        android:id="@+id/menu_home"
-        android:icon="@drawable/home_24"
-        android:title="@string/menu_home"
-        />
 
-    <item
-        android:id="@+id/menu_settings"
-        android:icon="@drawable/settings_24"
-        android:title="@string/menu_settings"
-        />
+    <group android:id="@+id/group_navigation" android:checkableBehavior="none">
+        <item
+            android:id="@+id/menu_home"
+            android:icon="@drawable/home_24"
+            android:title="@string/menu_home"
+            />
 
-    <item
-        android:id="@+id/menu_info"
-        android:icon="@drawable/info_24"
-        android:title="@string/menu_info"
-        />
+        <item
+            android:id="@+id/menu_settings"
+            android:icon="@drawable/settings_24"
+            android:title="@string/menu_settings"
+            />
+
+        <item
+            android:id="@+id/menu_info"
+            android:icon="@drawable/info_24"
+            android:title="@string/menu_info"
+            />
+    </group>
 </menu>
