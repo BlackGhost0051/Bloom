@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        android:key="dark_mode"
+        android:title="Dark Mode"
+        android:summary="Enable or disable dark mode"
+        android:defaultValue="false" />
+
+    <SwitchPreferenceCompat
+        android:key="save_position"
+        android:title="Save Position"
+        android:summary="Save image list scroll position"
+        android:defaultValue="false" />
+
+    <androidx.preference.SeekBarPreference
+        android:key="inertia_speed"
+        android:title="Inertia Scroll Speed"
+        android:summary="Adjust the scrolling speed"
+        android:defaultValue="2"
+        android:min="1"
+        android:max="5"
+        app:showSeekBarValue="true" />
 
     <SwitchPreferenceCompat
         android:key="dark_mode"
