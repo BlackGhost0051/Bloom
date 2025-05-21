@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Bloom</string>
-
-
+    <string name="repo_link">https://github.com/BlackGhost0051/Bloom</string>
+    <string name="github_link">https://github.com/BlackGhost0051</string>
 
 
     <string name="menu_randomize">Randomize</string>

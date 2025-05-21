@@ -26,5 +26,17 @@
             android:textSize="16sp"
             android:lineSpacingExtra="4dp"
             android:text="Bloom lets you hide your personal photos easily.\n\n• Your photos are stored in a private app-specific folder.\n• You can make this folder private by creating a `.nomedia` file, which hides it from gallery apps.\n• Toggling privacy will add or remove this file.\n• You can view your hidden photos only inside Bloom.\n• The photos are stored at:\n    Android/data/com.blackghost.bloom/files/\n\nNote: These photos may still be visible in advanced file managers unless your device is rooted or restricted by Android." />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\nProject open source\nGithub:"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/repo_link"
+            />
     </LinearLayout>
 </ScrollView>
