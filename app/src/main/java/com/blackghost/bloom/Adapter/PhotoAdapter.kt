@@ -1,6 +1,8 @@
 package com.blackghost.bloom.Adapter
 
 import android.graphics.BitmapFactory
+import android.media.ThumbnailUtils
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +24,24 @@ class PhotoAdapter(private val photos: List<File>) : RecyclerView.Adapter<PhotoA
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        val bitmap = BitmapFactory.decodeFile(photos[position].absolutePath)
-        holder.imageView.setImageBitmap(bitmap)
+        val file = photos[position]
+        val extension = file.extension.lowercase()
+
+        when (extension) {
+            "jpg", "jpeg", "png" -> {
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+                holder.imageView.setImageBitmap(bitmap)
+            }
+
+            "mp4" -> {
+                val thumbnail = ThumbnailUtils.createVideoThumbnail(
+                    file.toString(),
+                    MediaStore.Images.Thumbnails.MINI_KIND
+                )
+                holder.imageView.setImageBitmap(thumbnail)
+
+            }
+        }
     }
 
     override fun getItemCount(): Int = photos.size
