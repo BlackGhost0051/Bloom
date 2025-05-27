@@ -7,7 +7,7 @@
         android:key="dark_mode"
         android:title="Dark Mode"
         android:summary="Enable or disable dark mode"
-        android:defaultValue="false" />
+        android:defaultValue="true" />
 
     <SwitchPreferenceCompat
         android:key="save_position"
