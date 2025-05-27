@@ -1,10 +1,12 @@
 package com.blackghost.bloom.Fragment
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blackghost.bloom.Adapter.PhotoAdapter
@@ -20,14 +22,22 @@ class MainFragment : Fragment() {
     private var photos: List<File> = emptyList()
     private lateinit var photoManager: PhotoManager
 
+    private lateinit var layoutManager: LinearLayoutManager
+    private lateinit var preferences: SharedPreferences
+
+    private var savedScrollPosition: Int = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+
         recyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = layoutManager
 
 
         photoManager = PhotoManager(requireContext())
@@ -36,7 +46,21 @@ class MainFragment : Fragment() {
         photos = photoManager.loadPhotosFromGPhotos()
         recyclerView.adapter = PhotoAdapter(photos)
 
+        if (preferences.getBoolean("save_position", false)){
+            savedScrollPosition = preferences.getInt("saved_scroll_position", 0)
+            recyclerView.scrollToPosition(savedScrollPosition)
+        }
+
         return view
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        if (preferences.getBoolean("save_position", false)) {
+            val currentPosition = layoutManager.findFirstVisibleItemPosition()
+            preferences.edit().putInt("saved_scroll_position", currentPosition).apply()
+        }
     }
 
     fun refreshPhotos(shuffle: Boolean = false) {

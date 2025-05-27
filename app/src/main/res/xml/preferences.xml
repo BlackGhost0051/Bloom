@@ -24,17 +24,4 @@
         android:max="5"
         app:showSeekBarValue="true" />
 
-    <SwitchPreferenceCompat
-        android:key="dark_mode"
-        android:title="Dark Mode"
-        android:summary="Enable or disable dark mode"
-        android:defaultValue="false" />
-
-    <SwitchPreference
-        android:key="save_position"
-        android:title="Save position"
-        android:summary="Save image list position"
-        android:defaultValue="false"
-        />
-
 </PreferenceScreen>
