@@ -19,8 +19,7 @@
         android:key="inertia_speed"
         android:title="Inertia Scroll Speed"
         android:summary="Adjust the scrolling speed"
-        android:defaultValue="2"
-        android:min="1"
+        android:defaultValue="0"
         android:max="5"
         app:showSeekBarValue="true" />
 

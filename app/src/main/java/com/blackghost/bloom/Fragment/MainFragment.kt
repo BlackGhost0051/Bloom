@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.preference.PreferenceManager
@@ -26,6 +27,7 @@ class MainFragment : Fragment() {
     private lateinit var preferences: SharedPreferences
 
     private var savedScrollPosition: Int = 0
+    private var scrollSpeedFactor: Float = 1.0f
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +36,13 @@ class MainFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
         preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        scrollSpeedFactor = preferences.getInt("inertia_speed", 2).toFloat()
+
+        preferences.registerOnSharedPreferenceChangeListener { _, key ->
+            if (key == "inertia_speed") {
+                scrollSpeedFactor = preferences.getInt("inertia_speed", 2).toFloat()
+            }
+        }
 
         recyclerView = view.findViewById(R.id.recyclerView)
         layoutManager = LinearLayoutManager(requireContext())
@@ -51,6 +60,8 @@ class MainFragment : Fragment() {
             recyclerView.scrollToPosition(savedScrollPosition)
         }
 
+        setupCustomScrollInertia()
+
         return view
     }
 
@@ -66,5 +77,27 @@ class MainFragment : Fragment() {
     fun refreshPhotos(shuffle: Boolean = false) {
         photos = photoManager.loadPhotosFromGPhotos(shuffle)
         recyclerView.adapter = PhotoAdapter(photos)
+    }
+
+
+    private fun setupCustomScrollInertia() {
+        recyclerView.setOnTouchListener(object : View.OnTouchListener {
+            private var lastY = 0f
+
+            override fun onTouch(v: View?, event: MotionEvent): Boolean {
+                when (event.action) {
+                    MotionEvent.ACTION_MOVE -> {
+                        val deltaY = event.y - lastY
+                        recyclerView.scrollBy(0, (-deltaY * scrollSpeedFactor).toInt())
+                        lastY = event.y
+                    }
+
+                    MotionEvent.ACTION_DOWN -> {
+                        lastY = event.y
+                    }
+                }
+                return false
+            }
+        })
     }
 }
