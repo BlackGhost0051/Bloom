@@ -7,4 +7,18 @@
     <color name="green">#00FF00</color>
 
     <color name="active_feature">#FF0000</color>
+
+
+
+
+
+
+
+
+    <color name="day_primary">#FFFFFF</color>
+    <color name="day_background">#FFFFFF</color>
+    <color name="day_text">#000000</color>
+    <color name="day_status_bar">#000000</color>
+    <color name="day_navigation_bar">#FFFFFF</color>
+
 </resources>

@@ -1,11 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.Bloom" parent="Theme.AppCompat.NoActionBar">
+    <style name="Base.Theme.Bloom" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/day_primary</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/black</item>
 
-        <item name="android:textColor">@color/active_feature</item>
-        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:windowBackground">@color/day_background</item>
+        <item name="android:textColor">@color/day_text</item>
 
-        <item name="android:navigationBarColor">@color/black</item>
-
+        <item name="android:statusBarColor">@color/day_status_bar</item>
+        <item name="android:navigationBarColor">@color/day_navigation_bar</item>
     </style>
 
     <style name="Theme.Bloom" parent="Base.Theme.Bloom" />
