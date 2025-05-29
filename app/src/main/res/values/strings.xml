@@ -11,4 +11,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_info">Info</string>
+
+
+
+    <string name="preference_screen_title_dark_mode">Dark Mode</string>
+    <string name="preference_screen_summary_dark_mode">Enable or disable dark mode.</string>
+    <string name="preference_screen_title_save_position">Save Position</string>
+    <string name="preference_screen_summary_save_position">Save image list scroll position.</string>
+    <string name="preference_screen_title_inertia_speed">Inertia Scroll Speed</string>
+    <string name="preference_screen_summary_inertia_speed">Adjust the scrolling speed.</string>
 </resources>

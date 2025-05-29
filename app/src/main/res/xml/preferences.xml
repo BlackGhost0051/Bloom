@@ -5,20 +5,20 @@
 
     <SwitchPreferenceCompat
         android:key="dark_mode"
-        android:title="Dark Mode"
-        android:summary="Enable or disable dark mode"
+        android:title="@string/preference_screen_title_dark_mode"
+        android:summary="@string/preference_screen_summary_dark_mode"
         android:defaultValue="true" />
 
     <SwitchPreferenceCompat
         android:key="save_position"
-        android:title="Save Position"
-        android:summary="Save image list scroll position"
+        android:title="@string/preference_screen_title_save_position"
+        android:summary="@string/preference_screen_summary_save_position"
         android:defaultValue="false" />
 
     <androidx.preference.SeekBarPreference
         android:key="inertia_speed"
-        android:title="Inertia Scroll Speed"
-        android:summary="Adjust the scrolling speed"
+        android:title="@string/preference_screen_title_inertia_speed"
+        android:summary="@string/preference_screen_summary_inertia_speed"
         android:defaultValue="0"
         android:max="5"
         app:showSeekBarValue="true" />
