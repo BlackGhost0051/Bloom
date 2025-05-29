@@ -81,9 +81,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     )
                 }
-                R.id.menu_inertia -> {
-
-                }
                 R.id.menu_home -> {
                     toolbar.setTitle(R.string.app_name)
                     supportFragmentManager

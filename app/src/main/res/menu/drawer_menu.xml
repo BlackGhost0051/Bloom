@@ -12,11 +12,6 @@
         android:title="@string/menu_privacy"
         />
 
-    <item
-        android:id="@+id/menu_inertia"
-        android:icon="@drawable/filter_list_24"
-        android:title="@string/menu_inertia"
-        />
 
 
     <group android:id="@+id/group_navigation" android:checkableBehavior="none">
