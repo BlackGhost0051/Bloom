@@ -1,5 +1,6 @@
 package com.blackghost.bloom.Fragment
 
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -80,6 +81,7 @@ class MainFragment : Fragment() {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupCustomScrollInertia() {
         recyclerView.setOnTouchListener(object : View.OnTouchListener {
             private var lastY = 0f
