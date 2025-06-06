@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/menu_privacy"
-        android:icon="@android:drawable/ic_lock_lock"
+        android:icon="@drawable/lock_24"
         android:title="@string/menu_privacy"
         />
 
