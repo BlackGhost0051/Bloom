@@ -6,7 +6,10 @@ import android.net.Uri
 import android.os.Environment
 import android.util.Log
 import android.widget.Toast
+import androidx.preference.PreferenceManager
+import com.blackghost.bloom.Utility.FileUtil
 import java.io.File
+import androidx.core.net.toUri
 
 class FolderManager(private val context: Context) {
 
@@ -15,6 +18,18 @@ class FolderManager(private val context: Context) {
     init {
         val root = Environment.getExternalStorageDirectory()
         folder = File(root, "Bloom")
+
+        //        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+//        val uriString = prefs.getString("custom_folder_uri", null)
+//
+//        folder = if (uriString != null) {
+//            val uri = uriString.toUri()
+//            val path = FileUtil.getFullPathFromTreeUri(uri, context) // ← Helper function below
+//            File(path ?: Environment.getExternalStorageDirectory().absolutePath)
+//        } else {
+//            File(Environment.getExternalStorageDirectory(), "Bloom")
+//        }
+//
 
         Log.d("FolderManager", folder.toString())
 

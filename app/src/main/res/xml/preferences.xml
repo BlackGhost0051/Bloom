@@ -23,4 +23,11 @@
         android:max="5"
         app:showSeekBarValue="true" />
 
+    <Preference
+        android:key="custom_folder"
+        android:title="Custom Folder"
+        android:summary="Tap to select a folder for photos"
+        android:defaultValue=""
+        android:selectable="true" />
+
 </PreferenceScreen>
