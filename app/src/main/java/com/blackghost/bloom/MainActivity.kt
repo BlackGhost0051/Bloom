@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -14,7 +15,7 @@ import androidx.preference.PreferenceManager
 import com.blackghost.bloom.Fragment.InfoFragment
 import com.blackghost.bloom.Fragment.MainFragment
 import com.blackghost.bloom.Fragment.SettingsFragment
-import com.blackghost.bloom.Manager.PhotoManager
+import com.blackghost.bloom.Manager.FolderManager
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -22,8 +23,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toolbar: Toolbar
     private lateinit var open_menu_button: ImageButton
+    private lateinit var folderManager: FolderManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        requestFilesAccess()
+        folderManager = FolderManager(this)
 
 
 
@@ -69,17 +75,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 R.id.menu_privacy -> {
-                    val photoManager = PhotoManager(this)
-                    photoManager.togglePrivacy(
-                        itemIconTintCallback = { color ->
-                            menuItem.icon?.setTint(ContextCompat.getColor(this, color))
-                        },
-                        notifyMediaScanner = {
-                            sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).apply {
-                                data = Uri.fromFile(photoManager.getGPhotosDir())
-                            })
-                        }
-                    )
+                    folderManager.togglePrivacy()
                 }
                 R.id.menu_home -> {
                     toolbar.setTitle(R.string.app_name)
@@ -114,4 +110,25 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
     }
+
+
+    fun requestFilesAccess(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            val hasPermission = android.os.Environment.isExternalStorageManager()
+            if (!hasPermission) {
+                val intent = Intent(android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+                intent.data = Uri.parse("package:$packageName")
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R &&
+            !android.os.Environment.isExternalStorageManager()) {
+            Toast.makeText(this, "Storage access not granted. App may not work properly.", Toast.LENGTH_LONG).show()
+        }
+    }
+
 }

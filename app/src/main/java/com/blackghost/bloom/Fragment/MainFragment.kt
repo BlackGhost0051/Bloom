@@ -12,7 +12,7 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blackghost.bloom.Adapter.PhotoAdapter
-import com.blackghost.bloom.Manager.PhotoManager
+import com.blackghost.bloom.Manager.FolderManager
 import com.blackghost.bloom.R
 import java.io.File
 
@@ -21,8 +21,8 @@ class MainFragment : Fragment() {
 
 
     private lateinit var recyclerView: RecyclerView
-    private var photos: List<File> = emptyList()
-    private lateinit var photoManager: PhotoManager
+    private var files: List<File> = emptyList()
+    private lateinit var folderManager: FolderManager
 
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var preferences: SharedPreferences
@@ -50,11 +50,10 @@ class MainFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
 
-        photoManager = PhotoManager(requireContext())
-        photoManager.createGPhotosFolderIfNeeded()
+        folderManager = FolderManager(requireContext())
 
-        photos = photoManager.loadPhotosFromGPhotos()
-        recyclerView.adapter = PhotoAdapter(photos)
+        files = folderManager.loadFilesFromFolder()
+        recyclerView.adapter = PhotoAdapter(files)
 
         if (preferences.getBoolean("save_position", false)){
             savedScrollPosition = preferences.getInt("saved_scroll_position", 0)
@@ -76,8 +75,8 @@ class MainFragment : Fragment() {
     }
 
     fun refreshPhotos(shuffle: Boolean = false) {
-        photos = photoManager.loadPhotosFromGPhotos(shuffle)
-        recyclerView.adapter = PhotoAdapter(photos)
+        files = folderManager.loadFilesFromFolder(shuffle)
+        recyclerView.adapter = PhotoAdapter(files)
     }
 
 
