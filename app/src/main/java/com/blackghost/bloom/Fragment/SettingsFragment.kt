@@ -11,19 +11,19 @@ import com.blackghost.bloom.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
-//    private val folderPickerRequestCode = 1001
+    private val folderPickerRequestCode = 1001
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
 
-//        val folderPreference = findPreference<Preference>("custom_folder")
-//        folderPreference?.setOnPreferenceClickListener {
-//            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)
-//            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-//            startActivityForResult(intent, folderPickerRequestCode)
-//            true
-//        }
+        val folderPreference = findPreference<Preference>("custom_folder")
+        folderPreference?.setOnPreferenceClickListener {
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+            startActivityForResult(intent, folderPickerRequestCode)
+            true
+        }
 
         val darkModeSwitch = findPreference<SwitchPreferenceCompat>("dark_mode")
         darkModeSwitch?.setOnPreferenceChangeListener { _, newValue ->
@@ -36,19 +36,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
             true
         }
     }
-//
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        if (requestCode == folderPickerRequestCode && data != null) {
-//            val uri = data.data ?: return
-//            requireActivity().contentResolver.takePersistableUriPermission(
-//                uri,
-//                Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-//            )
-//            val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-//            prefs.edit().putString("custom_folder_uri", uri.toString()).apply()
-//
-//            findPreference<Preference>("custom_folder")?.summary = uri.path
-//        }
-//    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == folderPickerRequestCode && data != null) {
+            val uri = data.data ?: return
+            requireActivity().contentResolver.takePersistableUriPermission(
+                uri,
+                Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+            )
+            val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            prefs.edit().putString("custom_folder_uri", uri.toString()).apply()
+
+            findPreference<Preference>("custom_folder")?.summary = uri.path
+        }
+    }
 }

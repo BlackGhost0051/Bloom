@@ -16,20 +16,20 @@ class FolderManager(private val context: Context) {
     private var folder: File
 
     init {
-        val root = Environment.getExternalStorageDirectory()
-        folder = File(root, "Bloom")
+//        val root = Environment.getExternalStorageDirectory()
+//        folder = File(root, "Bloom")
 
-        //        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-//        val uriString = prefs.getString("custom_folder_uri", null)
-//
-//        folder = if (uriString != null) {
-//            val uri = uriString.toUri()
-//            val path = FileUtil.getFullPathFromTreeUri(uri, context) // ← Helper function below
-//            File(path ?: Environment.getExternalStorageDirectory().absolutePath)
-//        } else {
-//            File(Environment.getExternalStorageDirectory(), "Bloom")
-//        }
-//
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val uriString = prefs.getString("custom_folder_uri", null)
+
+        folder = if (uriString != null) {
+            val uri = uriString.toUri()
+            val path = FileUtil.getFullPathFromTreeUri(uri, context)
+            File(path ?: Environment.getExternalStorageDirectory().absolutePath)
+        } else {
+            File(Environment.getExternalStorageDirectory(), "Bloom")
+        }
+
 
         Log.d("FolderManager", folder.toString())
 
