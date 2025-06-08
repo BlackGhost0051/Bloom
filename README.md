@@ -22,7 +22,7 @@ Bloom is a simple Android application written in Kotlin that creates a custom fo
 ### MainFragment
 
 ### SettingsFragment
-
+### InfoFragment
 
 ## Info
 
