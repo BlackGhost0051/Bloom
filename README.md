@@ -21,9 +21,18 @@ Bloom is a simple Android application written in Kotlin that creates a custom fo
 
 ### MainFragment
 
+media view
+
 ### SettingsFragment
 
+Folder path
+Theme
+Scroll
+Save position
+
 ### InfoFragment
+
+Info how use app
 
 ## Features
 
