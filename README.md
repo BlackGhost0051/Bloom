@@ -21,7 +21,7 @@ Bloom is a simple Android application written in Kotlin that creates a custom fo
 
 ### MainFragment
 
-media view
+The primary screen for displaying media content such as images or videos.
 
 ### SettingsFragment
 
@@ -32,7 +32,7 @@ Save position
 
 ### InfoFragment
 
-Info how use app
+Provides a brief guide or instructions on how to use the application.
 
 ## Features
 
